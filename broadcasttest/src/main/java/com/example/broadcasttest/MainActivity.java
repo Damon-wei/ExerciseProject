@@ -37,6 +37,7 @@ public class MainActivity extends BaseActivity {
             public void onClick(View view) {
                 Intent intent = new Intent("offline");
                 localBroadcastManager.sendBroadcast(intent);
+
             }
         });
     }
