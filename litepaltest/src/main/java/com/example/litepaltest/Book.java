@@ -1,16 +1,29 @@
 package com.example.litepaltest;
 
+import org.litepal.crud.DataSupport;
+
 /**
  * Created by Damon on 2017/3/15.
  * Description :
  */
 
-public class Book {
+public class Book extends DataSupport{
     private int id;
     private String author;
     private double price;
     private int pages;
     private String name;
+
+    @Override
+    public String toString() {
+        return "Book{" +
+                "id=" + id +
+                ", author='" + author + '\'' +
+                ", price=" + price +
+                ", pages=" + pages +
+                ", name='" + name + '\'' +
+                '}';
+    }
 
     public int getId() {
         return id;
