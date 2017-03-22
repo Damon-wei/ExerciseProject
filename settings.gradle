@@ -1,1 +1,1 @@
-include ':app', ':broadcasttest', ':litepaltest'
+include ':app', ':broadcasttest', ':litepaltest', ':contactstest'
