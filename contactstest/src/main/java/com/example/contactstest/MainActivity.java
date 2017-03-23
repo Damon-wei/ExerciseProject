@@ -48,7 +48,7 @@ public class MainActivity extends AppCompatActivity {
                     String name = cursor.getString(cursor.getColumnIndex(ContactsContract.CommonDataKinds.Phone.DISPLAY_NAME));
                     String phone = cursor.getString(cursor.getColumnIndex(ContactsContract.CommonDataKinds.Phone.NUMBER));
                     conmtatcsList.add(name + "\n" +phone);
-                    L.d("name="+ name +"  phone="+phone);
+                    L.d("name==="+ name +"  phone="+phone);
                 }
                 adapter.notifyDataSetChanged();
             }
