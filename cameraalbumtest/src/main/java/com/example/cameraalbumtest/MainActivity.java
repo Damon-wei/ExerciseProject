@@ -31,6 +31,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             ActivityCompat.requestPermissions(this,new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE},1);
         }else {
             takePhoto();
+
         }
 
     }
