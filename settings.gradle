@@ -1,1 +1,1 @@
-include ':app', ':broadcasttest', ':litepaltest', ':contactstest', ':notificationtest', ':cameraalbumtest'
+include ':app', ':broadcasttest', ':litepaltest', ':contactstest', ':notificationtest', ':cameraalbumtest', ':playaudiotest', ':networktest'
