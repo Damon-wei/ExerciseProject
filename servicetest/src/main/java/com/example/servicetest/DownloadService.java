@@ -63,6 +63,7 @@ public class DownloadService extends Service {
     public IBinder onBind(Intent intent) {
         return downloadBinder;
 
+
     }
 
     class DownloadBinder extends Binder{
