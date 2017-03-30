@@ -17,6 +17,10 @@ import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
 
+import okhttp3.OkHttpClient;
+import okhttp3.Request;
+import okhttp3.Response;
+
 public class MainActivity extends AppCompatActivity {
 
 
@@ -36,6 +40,18 @@ public class MainActivity extends AppCompatActivity {
                 new Thread(){
                     @Override
                     public void run() {
+                        try {                                
+                            OkHttpClient client = new OkHttpClient();
+                            Request request = new Request.Builder()
+                                    .url("https://www.baidu.com")
+                                    .build();
+                            Response response = client.newCall(request).execute();
+                            String responseData = response.body().string();
+                            showResponse(responseData);
+                        } catch (IOException e) {
+                            e.printStackTrace();
+                        }
+                        /*
                         HttpURLConnection connection = null;
                         BufferedReader reader = null;
                         try {
@@ -69,6 +85,7 @@ public class MainActivity extends AppCompatActivity {
                                 connection.disconnect();
                             }
                         }
+                        */
                     }
                 }.start();
             }
