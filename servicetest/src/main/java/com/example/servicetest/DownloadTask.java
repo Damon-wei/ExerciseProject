@@ -2,6 +2,7 @@ package com.example.servicetest;
 
 import android.os.AsyncTask;
 import android.os.Environment;
+import android.util.Log;
 
 import java.io.File;
 import java.io.IOException;
@@ -40,7 +41,7 @@ public class DownloadTask extends AsyncTask<String , Integer, Integer> {
         try{
             long downloadedLength = 0;//记录已下载的文件长度
             String downloadUrl = params[0];
-            String fileName = downloadUrl.substring(downloadUrl.indexOf("/"));//从下载链接截取文件名
+            String fileName = downloadUrl.substring(downloadUrl.lastIndexOf("/"));//从下载链接截取文件名
             String directory = Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS).getPath();//下载目录
             file = new File(directory + fileName);
             if (file.exists()) {
@@ -55,10 +56,12 @@ public class DownloadTask extends AsyncTask<String , Integer, Integer> {
 
             OkHttpClient client = new OkHttpClient();
             Request request = new Request.Builder()
+                    //断点下载，指定从哪个字节开始下载
                     .addHeader("RANGE","bytes=" + downloadedLength +"-")
                     .url(downloadUrl)
                     .build();
             Response response = client.newCall(request).execute();
+            int i = 0;
             if (response != null) {
                 inputStream = response.body().byteStream();
                 savedFile = new RandomAccessFile(file,"rw");
@@ -83,6 +86,7 @@ public class DownloadTask extends AsyncTask<String , Integer, Integer> {
                 return TYPE_SUCCESS;
             }
         }catch (Exception e){
+            Log.e("damon",e.getMessage());
             e.printStackTrace();
         }finally {
             try {

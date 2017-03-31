@@ -31,6 +31,7 @@ public class DownloadService extends Service {
         @Override
         public void onSuccess() {
             downloadTask = null;
+            //下载成功时将前台服务通知关闭，并创建一个下载成功的通知
             stopForeground(true);
             getNotificationManager().notify(1,getNotification("Download Success",-1));
             Toast.makeText(DownloadService.this,"Download Success",Toast.LENGTH_SHORT).show();
@@ -71,7 +72,7 @@ public class DownloadService extends Service {
             if (downloadTask == null) {
                 downloadUrl = url;
                 downloadTask = new DownloadTask(listener);
-                downloadTask.equals(downloadUrl);
+                downloadTask.execute(downloadUrl);
                 startForeground(1,getNotification("Downloading...",0));
                 Toast.makeText(DownloadService.this,"Downloading...",Toast.LENGTH_SHORT).show();
             }
@@ -88,7 +89,7 @@ public class DownloadService extends Service {
             }else {
                 if (downloadUrl != null) {
                     //取消下载时删除文件，并关闭通知
-                    String fileName = downloadUrl.substring(downloadUrl.indexOf("/"));
+                    String fileName = downloadUrl.substring(downloadUrl.lastIndexOf("/"));
                     String directory = Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS).getPath();
                     File file = new File(directory + fileName);
                     if (file.exists()) {
