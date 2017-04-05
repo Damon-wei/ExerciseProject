@@ -27,7 +27,7 @@ import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
 
-    //version 1.0,修复bug
+    //version 1.0,修复buggit
     private LocationClient mLocationClient;
     private TextView tvLocation;
     private MapView mapView;
