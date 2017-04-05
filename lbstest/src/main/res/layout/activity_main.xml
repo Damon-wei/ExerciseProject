@@ -12,5 +12,16 @@
         android:layout_marginLeft="16dp"
         android:layout_marginTop="16dp"
         app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_marginStart="16dp"
+        android:visibility="gone"/>
+
+    <com.baidu.mapapi.map.MapView
+        android:id="@+id/map"
+        android:layout_width="369dp"
+        android:layout_height="509dp"
+        tools:layout_editor_absoluteX="8dp"
+        tools:layout_editor_absoluteY="8dp">
+
+    </com.baidu.mapapi.map.MapView>
 </android.support.constraint.ConstraintLayout>
