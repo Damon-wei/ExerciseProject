@@ -64,7 +64,16 @@ public class MainActivity extends AppCompatActivity {
                 return true;
             }
         });
-        btnFloat.setOnClickListener(new View.OnClickListener() {
+        btnFloat.setOnClickListener(v -> {
+            Snackbar.make(v,"Buy Buy Buy",Snackbar.LENGTH_SHORT)
+                    .setAction("OK", new View.OnClickListener() {
+                        @Override
+                        public void onClick(View view) {
+                            T.showShort(MainActivity.this,"Nice");
+                        }
+                    }).show();
+        });
+        /*btnFloat.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Snackbar.make(view,"Buy Buy Buy",Snackbar.LENGTH_SHORT)
@@ -75,7 +84,7 @@ public class MainActivity extends AppCompatActivity {
                             }
                         }).show();
             }
-        });
+        });*/
         initImages();
         recyclerView.setLayoutManager(new GridLayoutManager(this,2));
         imageAdapter = new ImageAdapter(this,imageList);
